@@ -1,0 +1,3 @@
+/Users/jaden-isaac/Documents/GitHub/cpp-neural-network/build/CMakeFiles/main.dir
+/Users/jaden-isaac/Documents/GitHub/cpp-neural-network/build/CMakeFiles/edit_cache.dir
+/Users/jaden-isaac/Documents/GitHub/cpp-neural-network/build/CMakeFiles/rebuild_cache.dir
