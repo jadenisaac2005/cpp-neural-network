@@ -1,1 +1,1 @@
-/usr/bin/c++ -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/main.dir/main.cpp.o CMakeFiles/main.dir/MNISTReader.cpp.o CMakeFiles/main.dir/Matrix.cpp.o CMakeFiles/main.dir/Layer.cpp.o CMakeFiles/main.dir/Network.cpp.o -o main
+/usr/bin/c++ -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/main.dir/src/main.cpp.o CMakeFiles/main.dir/src/MNISTReader.cpp.o CMakeFiles/main.dir/src/Matrix.cpp.o CMakeFiles/main.dir/src/Layer.cpp.o CMakeFiles/main.dir/src/Network.cpp.o -o main

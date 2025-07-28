@@ -4,9 +4,6 @@ project(NeuralNetwork)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Tell CMake to look for headers in the 'include' directory
-target_include_directories(main PUBLIC "${CMAKE_SOURCE_DIR}/include")
-
 # Add the executable and specify ALL its source files from the 'src' directory
 add_executable(main
     src/main.cpp
@@ -15,3 +12,6 @@ add_executable(main
     src/Layer.cpp
     src/Network.cpp
 )
+
+# Tell CMake to look for headers in the 'include' directory
+target_include_directories(main PUBLIC "${CMAKE_SOURCE_DIR}/include")

@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I/Users/jaden-isaac/Documents/GitHub/cpp-neural-network/include
 
 CXX_FLAGS = -std=gnu++17
 

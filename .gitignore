@@ -1,0 +1,27 @@
+# Build directory
+/build/
+
+# Compiled files
+*.o
+*.out
+*.exe
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Python virtual environment
+/venv/
+/.venv/
+
+# Large data files
+# It's good practice to not track the dataset itself in Git.
+/data/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Editor-specific files
+.vscode/

@@ -63,3 +63,39 @@ Matrix Matrix::apply(std::function<double(double)> func) const {
     }
     return result;
 }
+
+Matrix Matrix::subtract(const Matrix& other) const {
+    if (rows != other.rows || cols != other.cols) {
+        throw std::invalid_argument("Matrix dimensions must be the same for subtraction.");
+    }
+    Matrix result(rows, cols);
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            result.data[i][j] = data[i][j] - other.data[i][j];
+        }
+    }
+    return result;
+}
+
+Matrix Matrix::hadamard_product(const Matrix& other) const {
+    if (rows != other.rows || cols != other.cols) {
+        throw std::invalid_argument("Matrix dimensions must be the same for hadamard product.");
+    }
+    Matrix result(rows, cols);
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            result.data[i][j] = data[i][j] * other.data[i][j];
+        }
+    }
+    return result;
+}
+
+Matrix Matrix::scale(double scalar) const {
+    Matrix result(rows, cols);
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            result.data[i][j] = data[i][j] * scalar;
+        }
+    }
+    return result;
+}

@@ -129,125 +129,125 @@ main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
-Layer.o: Layer.cpp.o
-.PHONY : Layer.o
+src/Layer.o: src/Layer.cpp.o
+.PHONY : src/Layer.o
 
 # target to build an object file
-Layer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Layer.cpp.o
-.PHONY : Layer.cpp.o
+src/Layer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Layer.cpp.o
+.PHONY : src/Layer.cpp.o
 
-Layer.i: Layer.cpp.i
-.PHONY : Layer.i
+src/Layer.i: src/Layer.cpp.i
+.PHONY : src/Layer.i
 
 # target to preprocess a source file
-Layer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Layer.cpp.i
-.PHONY : Layer.cpp.i
+src/Layer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Layer.cpp.i
+.PHONY : src/Layer.cpp.i
 
-Layer.s: Layer.cpp.s
-.PHONY : Layer.s
+src/Layer.s: src/Layer.cpp.s
+.PHONY : src/Layer.s
 
 # target to generate assembly for a file
-Layer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Layer.cpp.s
-.PHONY : Layer.cpp.s
+src/Layer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Layer.cpp.s
+.PHONY : src/Layer.cpp.s
 
-MNISTReader.o: MNISTReader.cpp.o
-.PHONY : MNISTReader.o
+src/MNISTReader.o: src/MNISTReader.cpp.o
+.PHONY : src/MNISTReader.o
 
 # target to build an object file
-MNISTReader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/MNISTReader.cpp.o
-.PHONY : MNISTReader.cpp.o
+src/MNISTReader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/MNISTReader.cpp.o
+.PHONY : src/MNISTReader.cpp.o
 
-MNISTReader.i: MNISTReader.cpp.i
-.PHONY : MNISTReader.i
+src/MNISTReader.i: src/MNISTReader.cpp.i
+.PHONY : src/MNISTReader.i
 
 # target to preprocess a source file
-MNISTReader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/MNISTReader.cpp.i
-.PHONY : MNISTReader.cpp.i
+src/MNISTReader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/MNISTReader.cpp.i
+.PHONY : src/MNISTReader.cpp.i
 
-MNISTReader.s: MNISTReader.cpp.s
-.PHONY : MNISTReader.s
+src/MNISTReader.s: src/MNISTReader.cpp.s
+.PHONY : src/MNISTReader.s
 
 # target to generate assembly for a file
-MNISTReader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/MNISTReader.cpp.s
-.PHONY : MNISTReader.cpp.s
+src/MNISTReader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/MNISTReader.cpp.s
+.PHONY : src/MNISTReader.cpp.s
 
-Matrix.o: Matrix.cpp.o
-.PHONY : Matrix.o
+src/Matrix.o: src/Matrix.cpp.o
+.PHONY : src/Matrix.o
 
 # target to build an object file
-Matrix.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Matrix.cpp.o
-.PHONY : Matrix.cpp.o
+src/Matrix.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Matrix.cpp.o
+.PHONY : src/Matrix.cpp.o
 
-Matrix.i: Matrix.cpp.i
-.PHONY : Matrix.i
+src/Matrix.i: src/Matrix.cpp.i
+.PHONY : src/Matrix.i
 
 # target to preprocess a source file
-Matrix.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Matrix.cpp.i
-.PHONY : Matrix.cpp.i
+src/Matrix.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Matrix.cpp.i
+.PHONY : src/Matrix.cpp.i
 
-Matrix.s: Matrix.cpp.s
-.PHONY : Matrix.s
+src/Matrix.s: src/Matrix.cpp.s
+.PHONY : src/Matrix.s
 
 # target to generate assembly for a file
-Matrix.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Matrix.cpp.s
-.PHONY : Matrix.cpp.s
+src/Matrix.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Matrix.cpp.s
+.PHONY : src/Matrix.cpp.s
 
-Network.o: Network.cpp.o
-.PHONY : Network.o
+src/Network.o: src/Network.cpp.o
+.PHONY : src/Network.o
 
 # target to build an object file
-Network.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Network.cpp.o
-.PHONY : Network.cpp.o
+src/Network.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Network.cpp.o
+.PHONY : src/Network.cpp.o
 
-Network.i: Network.cpp.i
-.PHONY : Network.i
+src/Network.i: src/Network.cpp.i
+.PHONY : src/Network.i
 
 # target to preprocess a source file
-Network.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Network.cpp.i
-.PHONY : Network.cpp.i
+src/Network.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Network.cpp.i
+.PHONY : src/Network.cpp.i
 
-Network.s: Network.cpp.s
-.PHONY : Network.s
+src/Network.s: src/Network.cpp.s
+.PHONY : src/Network.s
 
 # target to generate assembly for a file
-Network.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/Network.cpp.s
-.PHONY : Network.cpp.s
+src/Network.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Network.cpp.s
+.PHONY : src/Network.cpp.s
 
-main.o: main.cpp.o
-.PHONY : main.o
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -258,21 +258,21 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... main"
-	@echo "... Layer.o"
-	@echo "... Layer.i"
-	@echo "... Layer.s"
-	@echo "... MNISTReader.o"
-	@echo "... MNISTReader.i"
-	@echo "... MNISTReader.s"
-	@echo "... Matrix.o"
-	@echo "... Matrix.i"
-	@echo "... Matrix.s"
-	@echo "... Network.o"
-	@echo "... Network.i"
-	@echo "... Network.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... src/Layer.o"
+	@echo "... src/Layer.i"
+	@echo "... src/Layer.s"
+	@echo "... src/MNISTReader.o"
+	@echo "... src/MNISTReader.i"
+	@echo "... src/MNISTReader.s"
+	@echo "... src/Matrix.o"
+	@echo "... src/Matrix.i"
+	@echo "... src/Matrix.s"
+	@echo "... src/Network.o"
+	@echo "... src/Network.i"
+	@echo "... src/Network.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 

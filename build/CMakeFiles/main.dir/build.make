@@ -72,92 +72,92 @@ include CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/codegen:
 .PHONY : CMakeFiles/main.dir/codegen
 
-CMakeFiles/main.dir/main.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/main.cpp.o: /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/main.cpp
-CMakeFiles/main.dir/main.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaden-isaac/Documents/GitHub/cpp-neural-network/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main.cpp.o -MF CMakeFiles/main.dir/main.cpp.o.d -o CMakeFiles/main.dir/main.cpp.o -c /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/main.cpp
+CMakeFiles/main.dir/src/main.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/main.cpp.o: /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/src/main.cpp
+CMakeFiles/main.dir/src/main.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaden-isaac/Documents/GitHub/cpp-neural-network/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/main.cpp.o -MF CMakeFiles/main.dir/src/main.cpp.o.d -o CMakeFiles/main.dir/src/main.cpp.o -c /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/src/main.cpp
 
-CMakeFiles/main.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/main.cpp > CMakeFiles/main.dir/main.cpp.i
+CMakeFiles/main.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/src/main.cpp > CMakeFiles/main.dir/src/main.cpp.i
 
-CMakeFiles/main.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/main.cpp -o CMakeFiles/main.dir/main.cpp.s
+CMakeFiles/main.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/src/main.cpp -o CMakeFiles/main.dir/src/main.cpp.s
 
-CMakeFiles/main.dir/MNISTReader.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/MNISTReader.cpp.o: /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/MNISTReader.cpp
-CMakeFiles/main.dir/MNISTReader.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaden-isaac/Documents/GitHub/cpp-neural-network/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/MNISTReader.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/MNISTReader.cpp.o -MF CMakeFiles/main.dir/MNISTReader.cpp.o.d -o CMakeFiles/main.dir/MNISTReader.cpp.o -c /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/MNISTReader.cpp
+CMakeFiles/main.dir/src/MNISTReader.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/MNISTReader.cpp.o: /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/src/MNISTReader.cpp
+CMakeFiles/main.dir/src/MNISTReader.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaden-isaac/Documents/GitHub/cpp-neural-network/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/src/MNISTReader.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/MNISTReader.cpp.o -MF CMakeFiles/main.dir/src/MNISTReader.cpp.o.d -o CMakeFiles/main.dir/src/MNISTReader.cpp.o -c /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/src/MNISTReader.cpp
 
-CMakeFiles/main.dir/MNISTReader.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/MNISTReader.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/MNISTReader.cpp > CMakeFiles/main.dir/MNISTReader.cpp.i
+CMakeFiles/main.dir/src/MNISTReader.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/MNISTReader.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/src/MNISTReader.cpp > CMakeFiles/main.dir/src/MNISTReader.cpp.i
 
-CMakeFiles/main.dir/MNISTReader.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/MNISTReader.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/MNISTReader.cpp -o CMakeFiles/main.dir/MNISTReader.cpp.s
+CMakeFiles/main.dir/src/MNISTReader.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/MNISTReader.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/src/MNISTReader.cpp -o CMakeFiles/main.dir/src/MNISTReader.cpp.s
 
-CMakeFiles/main.dir/Matrix.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/Matrix.cpp.o: /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/Matrix.cpp
-CMakeFiles/main.dir/Matrix.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaden-isaac/Documents/GitHub/cpp-neural-network/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/Matrix.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/Matrix.cpp.o -MF CMakeFiles/main.dir/Matrix.cpp.o.d -o CMakeFiles/main.dir/Matrix.cpp.o -c /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/Matrix.cpp
+CMakeFiles/main.dir/src/Matrix.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/Matrix.cpp.o: /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/src/Matrix.cpp
+CMakeFiles/main.dir/src/Matrix.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaden-isaac/Documents/GitHub/cpp-neural-network/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/src/Matrix.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/Matrix.cpp.o -MF CMakeFiles/main.dir/src/Matrix.cpp.o.d -o CMakeFiles/main.dir/src/Matrix.cpp.o -c /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/src/Matrix.cpp
 
-CMakeFiles/main.dir/Matrix.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/Matrix.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/Matrix.cpp > CMakeFiles/main.dir/Matrix.cpp.i
+CMakeFiles/main.dir/src/Matrix.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/Matrix.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/src/Matrix.cpp > CMakeFiles/main.dir/src/Matrix.cpp.i
 
-CMakeFiles/main.dir/Matrix.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/Matrix.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/Matrix.cpp -o CMakeFiles/main.dir/Matrix.cpp.s
+CMakeFiles/main.dir/src/Matrix.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/Matrix.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/src/Matrix.cpp -o CMakeFiles/main.dir/src/Matrix.cpp.s
 
-CMakeFiles/main.dir/Layer.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/Layer.cpp.o: /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/Layer.cpp
-CMakeFiles/main.dir/Layer.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaden-isaac/Documents/GitHub/cpp-neural-network/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/Layer.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/Layer.cpp.o -MF CMakeFiles/main.dir/Layer.cpp.o.d -o CMakeFiles/main.dir/Layer.cpp.o -c /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/Layer.cpp
+CMakeFiles/main.dir/src/Layer.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/Layer.cpp.o: /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/src/Layer.cpp
+CMakeFiles/main.dir/src/Layer.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaden-isaac/Documents/GitHub/cpp-neural-network/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/src/Layer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/Layer.cpp.o -MF CMakeFiles/main.dir/src/Layer.cpp.o.d -o CMakeFiles/main.dir/src/Layer.cpp.o -c /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/src/Layer.cpp
 
-CMakeFiles/main.dir/Layer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/Layer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/Layer.cpp > CMakeFiles/main.dir/Layer.cpp.i
+CMakeFiles/main.dir/src/Layer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/Layer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/src/Layer.cpp > CMakeFiles/main.dir/src/Layer.cpp.i
 
-CMakeFiles/main.dir/Layer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/Layer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/Layer.cpp -o CMakeFiles/main.dir/Layer.cpp.s
+CMakeFiles/main.dir/src/Layer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/Layer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/src/Layer.cpp -o CMakeFiles/main.dir/src/Layer.cpp.s
 
-CMakeFiles/main.dir/Network.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/Network.cpp.o: /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/Network.cpp
-CMakeFiles/main.dir/Network.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaden-isaac/Documents/GitHub/cpp-neural-network/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/Network.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/Network.cpp.o -MF CMakeFiles/main.dir/Network.cpp.o.d -o CMakeFiles/main.dir/Network.cpp.o -c /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/Network.cpp
+CMakeFiles/main.dir/src/Network.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/Network.cpp.o: /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/src/Network.cpp
+CMakeFiles/main.dir/src/Network.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/jaden-isaac/Documents/GitHub/cpp-neural-network/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/src/Network.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/Network.cpp.o -MF CMakeFiles/main.dir/src/Network.cpp.o.d -o CMakeFiles/main.dir/src/Network.cpp.o -c /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/src/Network.cpp
 
-CMakeFiles/main.dir/Network.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/Network.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/Network.cpp > CMakeFiles/main.dir/Network.cpp.i
+CMakeFiles/main.dir/src/Network.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/Network.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/src/Network.cpp > CMakeFiles/main.dir/src/Network.cpp.i
 
-CMakeFiles/main.dir/Network.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/Network.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/Network.cpp -o CMakeFiles/main.dir/Network.cpp.s
+CMakeFiles/main.dir/src/Network.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/Network.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/src/Network.cpp -o CMakeFiles/main.dir/src/Network.cpp.s
 
 # Object files for target main
 main_OBJECTS = \
-"CMakeFiles/main.dir/main.cpp.o" \
-"CMakeFiles/main.dir/MNISTReader.cpp.o" \
-"CMakeFiles/main.dir/Matrix.cpp.o" \
-"CMakeFiles/main.dir/Layer.cpp.o" \
-"CMakeFiles/main.dir/Network.cpp.o"
+"CMakeFiles/main.dir/src/main.cpp.o" \
+"CMakeFiles/main.dir/src/MNISTReader.cpp.o" \
+"CMakeFiles/main.dir/src/Matrix.cpp.o" \
+"CMakeFiles/main.dir/src/Layer.cpp.o" \
+"CMakeFiles/main.dir/src/Network.cpp.o"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
-main: CMakeFiles/main.dir/main.cpp.o
-main: CMakeFiles/main.dir/MNISTReader.cpp.o
-main: CMakeFiles/main.dir/Matrix.cpp.o
-main: CMakeFiles/main.dir/Layer.cpp.o
-main: CMakeFiles/main.dir/Network.cpp.o
+main: CMakeFiles/main.dir/src/main.cpp.o
+main: CMakeFiles/main.dir/src/MNISTReader.cpp.o
+main: CMakeFiles/main.dir/src/Matrix.cpp.o
+main: CMakeFiles/main.dir/src/Layer.cpp.o
+main: CMakeFiles/main.dir/src/Network.cpp.o
 main: CMakeFiles/main.dir/build.make
 main: CMakeFiles/main.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/jaden-isaac/Documents/GitHub/cpp-neural-network/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable main"

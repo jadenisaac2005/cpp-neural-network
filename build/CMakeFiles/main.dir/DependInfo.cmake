@@ -8,11 +8,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/jaden-isaac/Documents/GitHub/cpp-neural-network/Layer.cpp" "CMakeFiles/main.dir/Layer.cpp.o" "gcc" "CMakeFiles/main.dir/Layer.cpp.o.d"
-  "/Users/jaden-isaac/Documents/GitHub/cpp-neural-network/MNISTReader.cpp" "CMakeFiles/main.dir/MNISTReader.cpp.o" "gcc" "CMakeFiles/main.dir/MNISTReader.cpp.o.d"
-  "/Users/jaden-isaac/Documents/GitHub/cpp-neural-network/Matrix.cpp" "CMakeFiles/main.dir/Matrix.cpp.o" "gcc" "CMakeFiles/main.dir/Matrix.cpp.o.d"
-  "/Users/jaden-isaac/Documents/GitHub/cpp-neural-network/Network.cpp" "CMakeFiles/main.dir/Network.cpp.o" "gcc" "CMakeFiles/main.dir/Network.cpp.o.d"
-  "/Users/jaden-isaac/Documents/GitHub/cpp-neural-network/main.cpp" "CMakeFiles/main.dir/main.cpp.o" "gcc" "CMakeFiles/main.dir/main.cpp.o.d"
+  "/Users/jaden-isaac/Documents/GitHub/cpp-neural-network/src/Layer.cpp" "CMakeFiles/main.dir/src/Layer.cpp.o" "gcc" "CMakeFiles/main.dir/src/Layer.cpp.o.d"
+  "/Users/jaden-isaac/Documents/GitHub/cpp-neural-network/src/MNISTReader.cpp" "CMakeFiles/main.dir/src/MNISTReader.cpp.o" "gcc" "CMakeFiles/main.dir/src/MNISTReader.cpp.o.d"
+  "/Users/jaden-isaac/Documents/GitHub/cpp-neural-network/src/Matrix.cpp" "CMakeFiles/main.dir/src/Matrix.cpp.o" "gcc" "CMakeFiles/main.dir/src/Matrix.cpp.o.d"
+  "/Users/jaden-isaac/Documents/GitHub/cpp-neural-network/src/Network.cpp" "CMakeFiles/main.dir/src/Network.cpp.o" "gcc" "CMakeFiles/main.dir/src/Network.cpp.o.d"
+  "/Users/jaden-isaac/Documents/GitHub/cpp-neural-network/src/main.cpp" "CMakeFiles/main.dir/src/main.cpp.o" "gcc" "CMakeFiles/main.dir/src/main.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
