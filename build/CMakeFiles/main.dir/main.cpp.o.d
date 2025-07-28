@@ -956,6 +956,4 @@ CMakeFiles/main.dir/main.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__format/formatter_tuple.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/print \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/unistd.h \
-  /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/Network.h \
-  /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/Layer.h \
   /Users/jaden-isaac/Documents/GitHub/cpp-neural-network/Matrix.h
