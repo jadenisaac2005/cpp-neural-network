@@ -15,6 +15,7 @@ void Matrix::print() const {
         std::cout << std::endl;
     }
 }
+
 Matrix Matrix::multiply(const Matrix& a, const Matrix& b) {
     if (a.cols != b.rows) {
         throw std::invalid_argument("Matrix dimensions are not compatible for multiplication.");
@@ -62,4 +63,3 @@ Matrix Matrix::apply(std::function<double(double)> func) const {
     }
     return result;
 }
-
