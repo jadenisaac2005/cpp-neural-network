@@ -7,7 +7,7 @@
 class Network {
 public:
     Network(const std::vector<int>& layer_sizes);
-    Matrix predict(Matrix input); // Renamed for clarity
+    void predict(const Matrix& input, Matrix& output);
     void load_weights(const std::string& filename);
 
 private:

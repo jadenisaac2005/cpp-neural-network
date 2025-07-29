@@ -1,24 +1,18 @@
-// Get references to our HTML elements
 const canvas = document.getElementById('drawingCanvas');
 const ctx = canvas.getContext('2d');
 const predictButton = document.getElementById('predictButton');
 const clearButton = document.getElementById('clearButton');
 const resultSpan = document.getElementById('result');
 
-// Setup canvas properties
-ctx.lineWidth = 20; // Make the drawing line thick
+ctx.lineWidth = 20;
 ctx.lineCap = 'round';
 ctx.strokeStyle = 'black';
-
 let isDrawing = false;
-let lastX = 0;
-let lastY = 0;
+let lastX = 0, lastY = 0;
 
-// Drawing functions
-function startDrawing(e) {
-    isDrawing = true;
-    [lastX, lastY] = [e.offsetX, e.offsetY];
-}
+function startDrawing(e) { isDrawing = true; [lastX, lastY] = [e.offsetX, e.offsetY]; }
+function stopDrawing() { isDrawing = false; }
+function clearCanvas() { ctx.clearRect(0, 0, canvas.width, canvas.height); resultSpan.textContent = '?';}
 
 function draw(e) {
     if (!isDrawing) return;
@@ -29,93 +23,75 @@ function draw(e) {
     [lastX, lastY] = [e.offsetX, e.offsetY];
 }
 
-function stopDrawing() {
-    isDrawing = false;
-}
-
-function clearCanvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    resultSpan.textContent = '?';
-}
-
-// Add event listeners for drawing
 canvas.addEventListener('mousedown', startDrawing);
 canvas.addEventListener('mousemove', draw);
 canvas.addEventListener('mouseup', stopDrawing);
 canvas.addEventListener('mouseout', stopDrawing);
-
-// Add event listener for the clear button
 clearButton.addEventListener('click', clearCanvas);
 
-// --- WebAssembly and Neural Network Logic ---
-let nn; // This will hold our C++ Network object
-
-// Load the Wasm module
 createModule().then(Module => {
     console.log("Wasm module loaded.");
     try {
-        // Create an instance of our C++ Network class
-        // The architecture [784, 128, 10] must match the trained model
-        nn = new Module.Network(new Module.VectorInt([784, 128, 10]));
+        const layer_sizes_js = [784, 128, 10];
+        const layer_sizes_cpp_vec = new Module.VectorInt();
+        layer_sizes_js.forEach(size => layer_sizes_cpp_vec.push_back(size));
 
-        // Load the pre-trained weights
-        nn.load_weights("weights.txt");
+        Module.init_network(layer_sizes_cpp_vec);
+        layer_sizes_cpp_vec.delete();
+
+        Module.load_network_weights("weights.txt");
 
         predictButton.disabled = false;
         predictButton.textContent = "Predict";
         console.log("Neural Network ready.");
+
+        predictButton.onclick = () => {
+            // Process the image data into a flat array of numbers
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = 28; tempCanvas.height = 28;
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCtx.drawImage(canvas, 0, 0, 28, 28);
+            const smallImageData = tempCtx.getImageData(0, 0, 28, 28);
+
+            const inputArray = []; // This will be a standard JavaScript array
+            for (let i = 0; i < smallImageData.data.length; i += 4) {
+                inputArray.push(smallImageData.data[i + 3] / 255.0);
+            }
+
+            // --- New Memory Management Logic ---
+            const input_ptr = Module._malloc(inputArray.length * Float64Array.BYTES_PER_ELEMENT);
+
+            // Create a typed array view into the Wasm memory
+            const heap_array = new Float64Array(Module.HEAPU8.buffer, input_ptr, inputArray.length);
+
+            // Copy the JavaScript data into the Wasm memory
+            heap_array.set(inputArray);
+
+            // Call the C++ function with the pointer and size
+            const resultVector = Module.predict(input_ptr, inputArray.length);
+
+            // Free the memory we allocated
+            Module._free(input_ptr);
+            // --- End of New Logic ---
+
+            // Process the result (this part is the same as before)
+            let maxVal = -Infinity;
+            let prediction = -1;
+            for (let i = 0; i < resultVector.size(); i++) {
+                const val = resultVector.get(i);
+                if (val > maxVal) {
+                    maxVal = val;
+                    prediction = i;
+                }
+            }
+
+            resultSpan.textContent = prediction;
+            resultVector.delete();
+        };
     } catch (e) {
         console.error("Error initializing network:", e);
     }
 });
 
-// Disable the predict button until the model is ready
 predictButton.disabled = true;
 predictButton.textContent = "Loading Model...";
-
-// Predict button click handler
-predictButton.onclick = () => {
-    // 1. Get the image data from the large canvas
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
-    // 2. Create a temporary small canvas to downsample the image
-    const tempCanvas = document.createElement('canvas');
-    tempCanvas.width = 28;
-    tempCanvas.height = 28;
-    const tempCtx = tempCanvas.getContext('2d');
-
-    // 3. Draw the large image onto the small canvas (this does the downsampling)
-    tempCtx.drawImage(canvas, 0, 0, 28, 28);
-
-    // 4. Get the pixel data from the small canvas
-    const smallImageData = tempCtx.getImageData(0, 0, 28, 28);
-    const inputArray = [];
-
-    // 5. Convert the image data to a normalized grayscale array
-    for (let i = 0; i < smallImageData.data.length; i += 4) {
-        // The alpha channel (data[i+3]) determines the pixel's value
-        inputArray.push(smallImageData.data[i + 3] / 255.0);
-    }
-
-    // 6. Call the C++ predict function
-    try {
-        const resultVector = nn.predict(inputArray);
-
-        // 7. Find the index of the highest value in the result
-        let maxVal = -Infinity;
-        let prediction = -1;
-        for (let i = 0; i < resultVector.size(); i++) {
-            if (resultVector.get(i) > maxVal) {
-                maxVal = resultVector.get(i);
-                prediction = i;
-            }
-        }
-
-        // 8. Display the prediction
-        resultSpan.textContent = prediction;
-        resultVector.delete(); // Important: free the memory used by the C++ vector
-
-    } catch (e) {
-        console.error("Error during prediction:", e);
-    }
-};

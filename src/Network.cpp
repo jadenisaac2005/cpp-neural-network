@@ -14,20 +14,18 @@ Network::Network(const std::vector<int>& layer_sizes) {
     }
 }
 
-Matrix Network::predict(Matrix input) {
+void Network::predict(const Matrix& input, Matrix& output) {
     Matrix current_output = input;
     for (size_t i = 0; i < layers.size(); ++i) {
         current_output = Matrix::multiply(layers[i].weights, current_output);
         current_output = current_output.add(layers[i].biases);
 
-        // Apply ReLU to all layers except the output layer
         if (i < layers.size() - 1) {
             current_output = current_output.apply(relu);
         }
     }
-    return current_output;
+    output = current_output;
 }
-
 void Network::load_weights(const std::string& filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
