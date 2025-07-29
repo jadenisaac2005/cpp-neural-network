@@ -74,7 +74,7 @@ Follow these instructions to get a copy of the project up and running on your lo
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/YOUR_USERNAME/cpp-neural-network.git](https://github.com/YOUR_USERNAME/cpp-neural-network.git)
+    git clone [https://github.com/YOUR_USERNAME/cpp-neural-network.git](https://github.com/jadenisaac2005/cpp-neural-network.git)
     cd cpp-neural-network
     ```
 2.  **Install Python dependencies:**
