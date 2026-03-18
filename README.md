@@ -127,13 +127,13 @@ Open your browser and go to `http://localhost:8000` to see your application live
 ---
 
 ## 💡 Live Demo
-(Add your live GitHub Pages link here once deployed)
+https://jadenisaac2005.github.io/cpp-neural-network/
 
 ---
 
 ## 📬 Contact
 
-Jaden Isaac – A B.Tech AI & ML student passionate about building useful projects and exploring the world of technology.
+Jaden Isaac – BTech AI & ML student at Amity University Bangalore. Building AI systems from scratch.
 
 Feel free to reach out with any questions or feedback!
 
