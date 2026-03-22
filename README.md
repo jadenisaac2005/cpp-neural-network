@@ -11,7 +11,8 @@ A handwritten digit recognizer built from scratch in C++ to demonstrate a fundam
 - **Neural Network From Scratch**: The entire network—including matrix operations, layers, and the feedforward process—is implemented in C++ without external ML libraries.
 - **High-Performance Inference**: All prediction logic runs in a pre-compiled WebAssembly module, making it incredibly fast.
 - **Interactive Canvas**: Users can draw a digit with their mouse for instant prediction.
-- **Hybrid Workflow**: The model is trained offline in Python using PyTorch for fast experimentation, while inference is handled by the high-performance C++ code.
+- **C++ Training**: Backpropagation implemented from scratch in C++. Training and inference both run in pure C++ — no Python, no PyTorch.
+
 
 ---
 
@@ -19,7 +20,6 @@ A handwritten digit recognizer built from scratch in C++ to demonstrate a fundam
 
 - **C++ (17)**: For the core neural network implementation.
 - **CMake**: To manage the C++ build process.
-- **Python / PyTorch**: For training the model and generating the weights.
 - **Emscripten**: The toolchain used to compile C++ to WebAssembly.
 - **WebAssembly (Wasm)**: The high-performance binary format for the web.
 - **HTML/CSS/JavaScript**: For the interactive user interface.
@@ -50,11 +50,8 @@ cpp-neural-network/
 │   ├── Matrix.cpp
 │   ├── MNISTReader.cpp
 │   └── Network.cpp
-│
 ├── .gitignore
-├── CMakeLists.txt
-├── train_model.py        # Python script for training
-└── weights.txt           # Output of the training script
+└── CMakeLists.txt
 
 ```
 ---
@@ -67,7 +64,6 @@ Follow these instructions to get a copy of the project up and running on your lo
 
 - A C++ compiler (g++, Clang, or MSVC)
 - CMake (version 3.10+)
-- Python 3.8+
 - The Emscripten SDK ([Installation Guide](https://emscripten.org/docs/getting_started/downloads.html))
 
 ### Installation & Setup
@@ -77,25 +73,22 @@ Follow these instructions to get a copy of the project up and running on your lo
     git clone [https://github.com/YOUR_USERNAME/cpp-neural-network.git](https://github.com/jadenisaac2005/cpp-neural-network.git)
     cd cpp-neural-network
     ```
-2.  **Install Python dependencies:**
-    ```bash
-    pip install torch torchvision
-    ```
-3.  **Activate the Emscripten SDK:**
+2.  **Activate the Emscripten SDK:**
     Navigate to your `emsdk` folder and run `source ./emsdk_env.sh`.
 
 ---
 
 ## 🖥️ Usage
 
-The project has three main steps: training the model, compiling the C++ to Wasm, and running the web server.
+The project has two main steps: compiling the trained C++ model to WebAssembly and running the web server.
 
-### 1. Train the Python Model
+### 1. Build and Train in C++
 
-First, you need to run the training script. This will generate the `weights.txt` file that the C++ application will use.
+Build the project using CMake and run the training binary:
 
 ```bash
-python train_model.py
+cmake -B build && cmake --build build
+./build/main
 ```
 
 ### 2. Compile C++ to WebAssembly
@@ -105,7 +98,6 @@ Next, run the Emscripten (`emcc`) command to compile your C++ code into `.wasm` 
 ```Bash
 emcc -O3 --bind -o docs/network.js \
 src/Matrix.cpp src/Layer.cpp src/Network.cpp src/bindings.cpp \
---preload-file weights.txt \
 -s MODULARIZE=1 -s EXPORT_NAME="createModule" \
 -s ALLOW_MEMORY_GROWTH=1 \
 -s "EXPORTED_FUNCTIONS=['_malloc','_free']" \
