@@ -32,14 +32,14 @@ clearButton.addEventListener('click', clearCanvas);
 createModule().then(Module => {
     console.log("Wasm module loaded.");
     try {
+        console.log("Creating layer sizes...");
         const layer_sizes_js = [784, 128, 10];
         const layer_sizes_cpp_vec = new Module.VectorInt();
         layer_sizes_js.forEach(size => layer_sizes_cpp_vec.push_back(size));
-
+        console.log("Calling init_network...");
         Module.init_network(layer_sizes_cpp_vec);
+        console.log("init_network done.");
         layer_sizes_cpp_vec.delete();
-
-        Module.load_network_weights("weights.txt");
 
         predictButton.disabled = false;
         predictButton.textContent = "Predict";

@@ -18,27 +18,30 @@ int main() {
         // 1. Setup the network
         std::vector<int> layer_sizes = {784, 128, 10};
         Network nn(layer_sizes);
-        nn.load_weights("weights.txt");
-        std::cout << "Weights loaded successfully." << std::endl;
 
-        // 2. Load the test data
-        std::vector<MNISTImage> test_data = read_mnist_dataset("data/t10k-images-idx3-ubyte", "data/t10k-labels-idx1-ubyte");
-        std::cout << "Test data loaded successfully." << std::endl;
+        // 2. Load training data
+        std::vector<MNISTImage> train_data = read_mnist_dataset(
+            "data/train-images-idx3-ubyte",
+            "data/train-labels-idx1-ubyte"
+        );
+        std::cout << "Training data loaded: " << train_data.size() << " images." << std::endl;
 
-        // 3. Predict the first image
-        MNISTImage first_image = test_data[0];
-        Matrix input = vectorToMatrix(first_image.pixels);
+        // 3. Train
+        double learning_rate = 0.01;
+        int epochs = 3;
 
-        Matrix output = nn.predict(input);
+        for (int epoch = 0; epoch < epochs; ++epoch) {
+            for (size_t i = 0; i < train_data.size(); ++i) {
+                Matrix input = vectorToMatrix(train_data[i].pixels);
 
-        std::cout << "\nPrediction for first image (Correct Label: " << first_image.label << "):" << std::endl;
-        output.print();
+                // Create one-hot label
+                Matrix label(10, 1);
+                label.data[train_data[i].label][0] = 1.0;
 
-        // Find the index of the highest value in the output matrix
-        auto& output_data = output.data[0]; // Get reference to the vector
-        int predicted_label = std::distance(output_data.begin(), std::max_element(output_data.begin(), output_data.end()));
-
-        std::cout << "\nPredicted Digit: " << predicted_label << std::endl;
+                nn.train(input, label, learning_rate);
+            }
+            std::cout << "Epoch " << epoch + 1 << " complete." << std::endl;
+        }
 
     } catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << std::endl;
