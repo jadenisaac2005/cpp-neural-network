@@ -16,3 +16,20 @@ Layer::Layer(int input_size, int output_size)
         }
     }
 }
+
+Matrix Layer::forward(const Matrix& input) {
+    last_input = input;
+    return Matrix::multiply(weights, input).add(biases);
+}
+
+Matrix Layer::backward(const Matrix& dL_dZ, double learning_rate) {
+    Matrix dL_dW = Matrix::multiply(dL_dZ, last_input.transpose());
+    Matrix dL_dX = Matrix::multiply(weights.transpose(), dL_dZ);
+    
+    // update weights and biases
+    weights = weights.subtract(dL_dW.scale(learning_rate));
+    biases = biases.subtract(dL_dZ.scale(learning_rate));
+    
+    return dL_dX; // pass gradient to previous layer
+}
+
