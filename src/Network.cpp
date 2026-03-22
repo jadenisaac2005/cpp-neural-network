@@ -53,3 +53,23 @@ void Network::load_weights(const std::string& filename) {
         current_layer++;
     }
 }
+void Network::train(const Matrix& input, const Matrix& label, 
+                    double learning_rate) {
+    // Forward pass
+    Matrix current = input;
+    for (size_t i = 0; i < layers.size(); ++i) {
+        current = layers[i].forward(current);
+        if (i < layers.size() - 1) {
+            current = current.apply(relu);
+        }
+    }
+    
+    // Compute loss gradient (output - label)
+    Matrix dL_dZ = current.subtract(label);
+    
+    // Backward pass
+    for (int i = layers.size() - 1; i >= 0; --i) {
+        dL_dZ = layers[i].backward(dL_dZ, learning_rate);
+    }
+}
+
