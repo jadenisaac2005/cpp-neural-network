@@ -8,4 +8,10 @@ public:
 
     Matrix weights;
     Matrix biases;
+    Matrix forward(const Matrix& input);
+    Matrix backward(const Matrix& dL_dZ, double learning_rate);
+
+private:
+    Matrix last_input;
+
 };
