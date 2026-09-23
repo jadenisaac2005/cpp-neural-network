@@ -93,16 +93,19 @@ cmake -B build && cmake --build build
 
 ### 2. Compile C++ to WebAssembly
 
-Next, run the Emscripten (`emcc`) command to compile your C++ code into `.wasm` and `.js` files and place them in the `/docs` folder.
+`scripts/build_wasm.sh` rebuilds both Wasm outputs from the same four C++
+sources:
+
+- **`docs/`** — a UMD build (`MODULARIZE=1`, script-tag friendly) used by the
+  GitHub Pages demo.
+- **`dist/es6/`** — an ES module build (`EXPORT_ES6=1`) for bundlers, e.g. a
+  Next.js client component: `import createModule from '.../network.js'`. It
+  accepts a `locateFile(path, prefix)` override so the host page can serve
+  `network.wasm` from wherever it likes.
 
 ```Bash
-emcc -O3 --bind -o docs/network.js \
-src/Matrix.cpp src/Layer.cpp src/Network.cpp src/bindings.cpp \
--s MODULARIZE=1 -s EXPORT_NAME="createModule" \
--s ALLOW_MEMORY_GROWTH=1 \
--s "EXPORTED_FUNCTIONS=['_malloc','_free']" \
--s "EXPORTED_RUNTIME_METHODS=['HEAPU8','FS']" \
--I include
+source /path/to/emsdk/emsdk_env.sh   # activate Emscripten
+./scripts/build_wasm.sh
 ```
 
 ### 3. Run the Local Web Server
