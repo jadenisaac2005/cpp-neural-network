@@ -39,6 +39,11 @@ size_t load_network_weights(const std::string& filename) {
     return nn->load_weights(filename);
 }
 
+size_t load_network_weights_binary(const std::string& filename) {
+    if (!nn) return 0;
+    return nn->load_weights_binary(filename);
+}
+
 // The new predict function takes a raw pointer to the data from JavaScript
 std::vector<double> predict_from_memory(uintptr_t input_ptr, size_t input_size) {
     if (!nn) {
@@ -135,6 +140,7 @@ EMSCRIPTEN_BINDINGS(my_module) {
 
     function("init_network", &init_network);
     function("load_network_weights", &load_network_weights);
+    function("load_network_weights_binary", &load_network_weights_binary);
     function("predict", &predict_from_memory); // Bind the new memory-based function
     function("predict_with_activations", &predict_with_activations);
 }

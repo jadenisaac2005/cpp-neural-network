@@ -15,6 +15,14 @@ public:
     // Returns the number of scalar values successfully parsed, so callers
     // can verify the file actually matched this network's shape.
     size_t load_weights(const std::string& filename);
+
+    // Binary weights format: 4-byte magic ("NNWF" = float32, "NNWD" =
+    // float64), uint32 LE num_layers, (num_layers+1) uint32 LE layer sizes,
+    // uint32 LE param_count, then param_count scalars in the same order as
+    // the text format (per layer: weights row-major, then biases).
+    size_t load_weights_binary(const std::string& filename);
+    void save_weights_binary(const std::string& filename, bool use_double = false) const;
+
     void train(const Matrix& input, const Matrix& label, double learning_rate);
 
 

@@ -25,3 +25,12 @@ add_executable(eval
     src/Network.cpp
 )
 target_include_directories(eval PUBLIC "${CMAKE_SOURCE_DIR}/include")
+
+# One-off converter: text weights format -> binary weights format
+add_executable(convert_weights
+    src/convert_weights.cpp
+    src/Matrix.cpp
+    src/Layer.cpp
+    src/Network.cpp
+)
+target_include_directories(convert_weights PUBLIC "${CMAKE_SOURCE_DIR}/include")

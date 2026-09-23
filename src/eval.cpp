@@ -6,14 +6,18 @@
 
 // Loads the network with the weights currently deployed to the web demo
 // (docs/network.data) and reports accuracy on the MNIST test set.
+// Usage: eval [weights_path] [images_path] [labels_path] [--binary]
 int main(int argc, char** argv) {
     std::string weights_path = argc > 1 ? argv[1] : "docs/network.data";
     std::string images_path = argc > 2 ? argv[2] : "data/t10k-images-idx3-ubyte";
     std::string labels_path = argc > 3 ? argv[3] : "data/t10k-labels-idx1-ubyte";
+    bool use_binary = argc > 4 && std::string(argv[4]) == "--binary";
 
     try {
         Network nn({784, 128, 10});
-        size_t params_read = nn.load_weights(weights_path);
+        size_t params_read = use_binary
+            ? nn.load_weights_binary(weights_path)
+            : nn.load_weights(weights_path);
         std::cout << "Loaded " << params_read << " parameters from " << weights_path << std::endl;
 
         std::vector<MNISTImage> test_data = read_mnist_dataset(images_path, labels_path);
