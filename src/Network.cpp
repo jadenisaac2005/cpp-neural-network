@@ -26,6 +26,20 @@ void Network::predict(const Matrix& input, Matrix& output) {
     }
     output = current_output;
 }
+
+void Network::predict_with_layers(const Matrix& input, std::vector<Matrix>& layer_outputs) {
+    Matrix current_output = input;
+    for (size_t i = 0; i < layers.size(); ++i) {
+        current_output = Matrix::multiply(layers[i].weights, current_output);
+        current_output = current_output.add(layers[i].biases);
+
+        if (i < layers.size() - 1) {
+            current_output = current_output.apply(relu);
+        }
+        layer_outputs.push_back(current_output);
+    }
+}
+
 size_t Network::load_weights(const std::string& filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
