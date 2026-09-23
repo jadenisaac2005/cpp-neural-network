@@ -101,7 +101,7 @@ src/Matrix.cpp src/Layer.cpp src/Network.cpp src/bindings.cpp \
 -s MODULARIZE=1 -s EXPORT_NAME="createModule" \
 -s ALLOW_MEMORY_GROWTH=1 \
 -s "EXPORTED_FUNCTIONS=['_malloc','_free']" \
--s "EXPORTED_RUNTIME_METHODS=['HEAPU8']" \
+-s "EXPORTED_RUNTIME_METHODS=['HEAPU8','FS']" \
 -I include
 ```
 

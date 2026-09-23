@@ -18,6 +18,37 @@
         h2 {
             font-size: 2em;
         }
+        #probabilities {
+            max-width: 280px;
+            margin: 0 auto;
+            font-family: monospace;
+            text-align: left;
+        }
+        .prob-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 2px 0;
+        }
+        .prob-label {
+            width: 1.5em;
+        }
+        .prob-bar-track {
+            flex: 1;
+            background: #ddd;
+            height: 12px;
+        }
+        .prob-bar-fill {
+            background: #4a90d9;
+            height: 100%;
+        }
+        .prob-value {
+            width: 4.5em;
+            text-align: right;
+        }
+        .prob-row.top .prob-bar-fill {
+            background: #2e7d32;
+        }
     </style>
 </head>
 <body>
@@ -27,6 +58,7 @@
     <button id="predictButton">Predict</button>
     <button id="clearButton">Clear</button>
     <h2>Prediction: <span id="result">?</span></h2>
+    <div id="probabilities"></div>
 
     <script src="network.js?v=1"></script>
     <script src="main.js?v=1"></script>

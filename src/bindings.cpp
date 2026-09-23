@@ -4,10 +4,29 @@
 #include <memory>
 #include <vector>
 #include <string>
+#include <cmath>
+#include <algorithm>
 
 using namespace emscripten;
 
 std::unique_ptr<Network> nn;
+
+// Converts raw output-layer scores into a probability distribution.
+std::vector<double> softmax(const std::vector<double>& scores) {
+    if (scores.empty()) return scores;
+    double max_score = *std::max_element(scores.begin(), scores.end());
+
+    std::vector<double> exp_scores(scores.size());
+    double sum = 0.0;
+    for (size_t i = 0; i < scores.size(); ++i) {
+        exp_scores[i] = std::exp(scores[i] - max_score);
+        sum += exp_scores[i];
+    }
+    for (size_t i = 0; i < exp_scores.size(); ++i) {
+        exp_scores[i] /= sum;
+    }
+    return exp_scores;
+}
 
 // --- C++ functions that will be called from JavaScript ---
 void init_network(const std::vector<int>& layer_sizes) {
@@ -48,7 +67,9 @@ std::vector<double> predict_from_memory(uintptr_t input_ptr, size_t input_size) 
             output_vec.push_back(output_matrix.data[i][0]);
         }
     }
-    return output_vec;
+
+    // 4. Convert raw scores to a probability distribution over all 10 digits
+    return softmax(output_vec);
 }
 
 // --- Binding code ---
