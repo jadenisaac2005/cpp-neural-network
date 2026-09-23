@@ -1,5 +1,5 @@
 const canvas = document.getElementById('drawingCanvas');
-const ctx = canvas.getContext('2d');
+const ctx = canvas.getContext('2d', { willReadFrequently: true });
 const predictButton = document.getElementById('predictButton');
 const clearButton = document.getElementById('clearButton');
 const resultSpan = document.getElementById('result');
@@ -91,7 +91,7 @@ function preprocessToMnistFrame(sourceCanvas) {
     const finalCanvas = document.createElement('canvas');
     finalCanvas.width = FRAME;
     finalCanvas.height = FRAME;
-    const finalCtx = finalCanvas.getContext('2d');
+    const finalCtx = finalCanvas.getContext('2d', { willReadFrequently: true });
 
     const offsetX = Math.round((FRAME - newW) / 2);
     const offsetY = Math.round((FRAME - newH) / 2);
@@ -141,6 +141,13 @@ function renderProbabilities(probs) {
     return topIdx;
 }
 
+function failModelLoad(message) {
+    console.error(message);
+    predictButton.disabled = true;
+    predictButton.textContent = "Model failed to load";
+    probabilitiesDiv.innerHTML = `<p>${message}</p>`;
+}
+
 createModule().then(async Module => {
     console.log("Wasm module loaded.");
     try {
@@ -153,15 +160,30 @@ createModule().then(async Module => {
         console.log("init_network done.");
         layer_sizes_cpp_vec.delete();
 
+        // Total scalars a correctly-shaped weights file must contain, derived
+        // from layer_sizes_js so it can't drift out of sync with the network.
+        const expectedParamCount = layer_sizes_js.slice(1).reduce((sum, size, i) => {
+            const inputSize = layer_sizes_js[i];
+            return sum + inputSize * size + size; // weights + biases for this layer
+        }, 0);
+
         // Load the pretrained weights into the Wasm module's virtual filesystem,
         // then have the C++ side read them in. Without this, the network runs
         // on whatever random weights its constructor happened to initialize.
         console.log("Fetching trained weights...");
         const weightsResponse = await fetch('network.data');
+        if (!weightsResponse.ok) {
+            failModelLoad(`Model failed to load: network.data returned HTTP ${weightsResponse.status}.`);
+            return;
+        }
         const weightsText = await weightsResponse.text();
         Module.FS.writeFile('/network_weights.txt', weightsText);
-        Module.load_network_weights('/network_weights.txt');
-        console.log("Trained weights loaded.");
+        const paramsRead = Module.load_network_weights('/network_weights.txt');
+        if (paramsRead !== expectedParamCount) {
+            failModelLoad(`Model failed to load: read ${paramsRead}/${expectedParamCount} weight values from network.data.`);
+            return;
+        }
+        console.log(`Trained weights loaded (${paramsRead} parameters).`);
 
         predictButton.disabled = false;
         predictButton.textContent = "Predict";
@@ -198,6 +220,7 @@ createModule().then(async Module => {
             resultSpan.textContent = prediction;
         };
     } catch (e) {
+        failModelLoad("Model failed to load: see console for details.");
         console.error("Error initializing network:", e);
     }
 });

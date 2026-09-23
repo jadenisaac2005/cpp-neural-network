@@ -26,13 +26,14 @@ void Network::predict(const Matrix& input, Matrix& output) {
     }
     output = current_output;
 }
-void Network::load_weights(const std::string& filename) {
+size_t Network::load_weights(const std::string& filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
         throw std::runtime_error("Could not open weights file.");
     }
     std::string line;
     int current_layer = 0;
+    size_t params_read = 0;
 
     // This expects 4 lines: fc1_weights, fc1_biases, fc2_weights, fc2_biases
     while (std::getline(file, line) && current_layer < layers.size() * 2) {
@@ -41,17 +42,18 @@ void Network::load_weights(const std::string& filename) {
             Matrix& weights = layers[current_layer / 2].weights;
             for (int i = 0; i < weights.rows; ++i) {
                 for (int j = 0; j < weights.cols; ++j) {
-                    ss >> weights.data[i][j];
+                    if (ss >> weights.data[i][j]) ++params_read;
                 }
             }
         } else { // It's a biases line
             Matrix& biases = layers[current_layer / 2].biases;
             for (int i = 0; i < biases.rows; ++i) {
-                ss >> biases.data[i][0];
+                if (ss >> biases.data[i][0]) ++params_read;
             }
         }
         current_layer++;
     }
+    return params_read;
 }
 void Network::train(const Matrix& input, const Matrix& label, 
                     double learning_rate) {

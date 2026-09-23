@@ -33,10 +33,9 @@ void init_network(const std::vector<int>& layer_sizes) {
     nn = std::make_unique<Network>(layer_sizes);
 }
 
-void load_network_weights(const std::string& filename) {
-    if (nn) {
-        nn->load_weights(filename.c_str());
-    }
+size_t load_network_weights(const std::string& filename) {
+    if (!nn) return 0;
+    return nn->load_weights(filename);
 }
 
 // The new predict function takes a raw pointer to the data from JavaScript
