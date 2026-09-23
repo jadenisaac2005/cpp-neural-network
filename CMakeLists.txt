@@ -15,3 +15,13 @@ add_executable(main
 
 # Tell CMake to look for headers in the 'include' directory
 target_include_directories(main PUBLIC "${CMAKE_SOURCE_DIR}/include")
+
+# Evaluates a trained weights file against the MNIST test set
+add_executable(eval
+    src/eval.cpp
+    src/MNISTReader.cpp
+    src/Matrix.cpp
+    src/Layer.cpp
+    src/Network.cpp
+)
+target_include_directories(eval PUBLIC "${CMAKE_SOURCE_DIR}/include")
