@@ -25,4 +25,7 @@ echo "Building dist/es6/ (ES module)..."
 mkdir -p dist/es6
 emcc "${COMMON_FLAGS[@]}" -s EXPORT_ES6=1 -s ENVIRONMENT=web -o dist/es6/network.js $SRC
 
+echo "Re-hashing docs/index.html cache-busting query params..."
+node scripts/hash_docs.js
+
 echo "Done."
