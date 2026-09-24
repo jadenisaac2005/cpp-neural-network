@@ -13,6 +13,14 @@ A handwritten digit recognizer built from scratch in C++ to demonstrate a fundam
 - **Interactive Canvas**: Users can draw a digit with their mouse for instant prediction.
 - **C++ Training**: Backpropagation implemented from scratch in C++. Training and inference both run in pure C++ — no Python, no PyTorch.
 
+---
+
+## 📊 Results
+
+- **97.43%** on the 10k MNIST test set, native C++ (no browser).
+- **97.33%** through the actual browser pipeline — all 10k test digits run through the demo's own preprocessing + WASM in headless Chromium (not people's own handwriting, MNIST digits through the deployed path).
+- Weights shipped as a **float32 binary (398 KB)**, down from a 1.16 MB text format — identical predictions on all 10k test digits.
+- **What broke:** the live demo was silently running an *untrained* network — a clean "1" came back as "4" — then a stale `?v=1` cache tag kept serving the old script. Fixed by having the loader verify it read exactly 101,770 parameters (disabling Predict otherwise) and switching cache tags to content hashes.
 
 ---
 
