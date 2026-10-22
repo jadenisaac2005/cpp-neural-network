@@ -9,7 +9,7 @@ const labelButtons = document.getElementById('labelButtons');
 const savedMessage = document.getElementById('savedMessage');
 
 // Google Apps Script web app that appends each labelled drawing to a sheet.
-const LOG_URL = "https://script.google.com/macros/s/AKfycbx4RJDae6efa9wLWBKs0mNvfCc0FCsK46mU4wnca2NNNzWDmBWHXC0ReZdmtjBJW2JQOQ/exec";
+const LOG_URL = "https://script.google.com/macros/s/AKfycbzRY_EUj6E34d7ODl4c9HffdjcyHpCzetqMM-Dym9QWVGkdjlRYk3JHdU41-xOgXHK2hQ/exec";
 
 // Thick enough that the stroke survives being shrunk down to MNIST's 20px box.
 ctx.lineWidth = 25;
