@@ -21,6 +21,33 @@
             max-width: 100%;
             height: auto;
         }
+        #privacyNotice {
+            font-size: 0.8em;
+            color: #555;
+            margin: 6px 16px 0;
+        }
+        #labelPanel p, #savedMessage {
+            margin: 8px 0;
+        }
+        #labelButtons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin: 0 auto 16px;
+            padding: 0 16px;
+        }
+        /* Two rows of five on narrow screens. */
+        @media (max-width: 600px) {
+            #labelButtons {
+                max-width: 304px;
+            }
+        }
+        #labelButtons button {
+            width: 48px;
+            height: 48px;
+            font-size: 1.3em;
+        }
         h2 {
             font-size: 2em;
         }
@@ -60,13 +87,19 @@
 <body>
     <h1>Draw a Digit (0-9)</h1>
     <canvas id="drawingCanvas" width="280" height="280"></canvas>
+    <p id="privacyNotice">Your drawings and the model's guesses are saved anonymously to help test the model.</p>
     <br><br>
     <button id="predictButton">Predict</button>
     <button id="clearButton">Clear</button>
     <h2>Prediction: <span id="result">?</span></h2>
+    <div id="labelPanel" hidden>
+        <p>What did you draw?</p>
+        <div id="labelButtons"></div>
+    </div>
+    <p id="savedMessage" hidden>Saved, draw another</p>
     <div id="probabilities"></div>
 
     <script src="network.js?v=33d03e78"></script>
-    <script src="main.js?v=0d91aad3"></script>
+    <script src="main.js?v=65bc3c7c"></script>
 </body>
 </html>

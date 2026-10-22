@@ -4,6 +4,12 @@ const predictButton = document.getElementById('predictButton');
 const clearButton = document.getElementById('clearButton');
 const resultSpan = document.getElementById('result');
 const probabilitiesDiv = document.getElementById('probabilities');
+const labelPanel = document.getElementById('labelPanel');
+const labelButtons = document.getElementById('labelButtons');
+const savedMessage = document.getElementById('savedMessage');
+
+// Google Apps Script web app that appends each labelled drawing to a sheet.
+const LOG_URL = "https://script.google.com/macros/s/AKfycbx4RJDae6efa9wLWBKs0mNvfCc0FCsK46mU4wnca2NNNzWDmBWHXC0ReZdmtjBJW2JQOQ/exec";
 
 // Thick enough that the stroke survives being shrunk down to MNIST's 20px box.
 ctx.lineWidth = 25;
@@ -11,6 +17,27 @@ ctx.lineCap = 'round';
 ctx.strokeStyle = 'black';
 let isDrawing = false;
 let lastX = 0, lastY = 0;
+let lastPointerType = 'mouse';
+// The latest prediction, waiting for the user to say what they drew. Only
+// logged if they tap a digit; cleared by Clear or by starting a new drawing.
+let pendingResult = null;
+
+// Random per-browser id so distinct participants can be counted. Reused across
+// visits via localStorage; falls back to an in-memory id if storage is blocked.
+const sessionId = (() => {
+    const newId = () => (crypto.randomUUID ? crypto.randomUUID()
+        : Math.random().toString(36).slice(2) + Date.now().toString(36));
+    try {
+        let id = localStorage.getItem('digit_demo_session_id');
+        if (!id) {
+            id = newId();
+            localStorage.setItem('digit_demo_session_id', id);
+        }
+        return id;
+    } catch (e) {
+        return newId();
+    }
+})();
 
 // Maps a pointer event to canvas pixel coordinates. The canvas can be shown
 // smaller than its 280x280 pixel size (e.g. shrunk to fit a phone), so scale
@@ -26,6 +53,10 @@ function canvasPoint(e) {
 
 function startDrawing(e) {
     isDrawing = true;
+    lastPointerType = e.pointerType || 'mouse';
+    // Drawing again without tapping a digit discards the unlabelled result.
+    hideLabelPanel();
+    savedMessage.hidden = true;
     // Keep receiving this pointer's events if the finger slides off the canvas.
     canvas.setPointerCapture(e.pointerId);
     [lastX, lastY] = canvasPoint(e);
@@ -35,6 +66,48 @@ function clearCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     resultSpan.textContent = '?';
     probabilitiesDiv.innerHTML = '';
+    hideLabelPanel();
+    savedMessage.hidden = true;
+}
+
+function hideLabelPanel() {
+    pendingResult = null;
+    labelPanel.hidden = true;
+}
+
+const round4 = x => Math.round(x * 10000) / 10000;
+
+function logResult(drawn) {
+    if (!pendingResult) return;
+    const payload = {
+        session_id: sessionId,
+        drawn: drawn,
+        predicted: pendingResult.predicted,
+        top_prob: round4(pendingResult.probs[pendingResult.predicted]),
+        probs: pendingResult.probs.map(round4),
+        pointer: pendingResult.pointer,
+        frame: pendingResult.frame,
+    };
+    // text/plain avoids a CORS preflight; no-cors means we can't read the
+    // response, so failures are only reported to the console.
+    fetch(LOG_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload),
+    }).catch(err => console.warn("Result log failed:", err));
+}
+
+for (let d = 0; d <= 9; d++) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = d;
+    button.addEventListener('click', () => {
+        logResult(d);
+        clearCanvas();
+        savedMessage.hidden = false;
+    });
+    labelButtons.appendChild(button);
 }
 
 function draw(e) {
@@ -238,6 +311,20 @@ createModule().then(async Module => {
 
             const prediction = renderProbabilities(probs);
             resultSpan.textContent = prediction;
+
+            // The exact model input (alpha channel, 0-255) for the log.
+            const frameValues = [];
+            for (let i = 3; i < frame.data.length; i += 4) {
+                frameValues.push(frame.data[i]);
+            }
+            pendingResult = {
+                predicted: prediction,
+                probs: probs,
+                pointer: lastPointerType,
+                frame: frameValues.join(','),
+            };
+            savedMessage.hidden = true;
+            labelPanel.hidden = false;
         };
     } catch (e) {
         failModelLoad("Model failed to load: see console for details.");
