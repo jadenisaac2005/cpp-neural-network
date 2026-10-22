@@ -14,6 +14,12 @@
             border: 3px solid black;
             cursor: crosshair;
             background-color: white;
+            /* Don't let a finger drag scroll or zoom the page. */
+            touch-action: none;
+            /* Shrink to fit narrow screens; pixel size stays 280x280. */
+            box-sizing: border-box;
+            max-width: 100%;
+            height: auto;
         }
         h2 {
             font-size: 2em;
@@ -61,6 +67,6 @@
     <div id="probabilities"></div>
 
     <script src="network.js?v=33d03e78"></script>
-    <script src="main.js?v=17b819c8"></script>
+    <script src="main.js?v=0d91aad3"></script>
 </body>
 </html>

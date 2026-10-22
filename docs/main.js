@@ -12,7 +12,24 @@ ctx.strokeStyle = 'black';
 let isDrawing = false;
 let lastX = 0, lastY = 0;
 
-function startDrawing(e) { isDrawing = true; [lastX, lastY] = [e.offsetX, e.offsetY]; }
+// Maps a pointer event to canvas pixel coordinates. The canvas can be shown
+// smaller than its 280x280 pixel size (e.g. shrunk to fit a phone), so scale
+// from displayed CSS pixels back to canvas pixels. clientLeft/clientTop and
+// clientWidth/clientHeight exclude the border, so the stroke lands exactly
+// under the pointer.
+function canvasPoint(e) {
+    const rect = canvas.getBoundingClientRect();
+    const x = (e.clientX - rect.left - canvas.clientLeft) * (canvas.width / canvas.clientWidth);
+    const y = (e.clientY - rect.top - canvas.clientTop) * (canvas.height / canvas.clientHeight);
+    return [x, y];
+}
+
+function startDrawing(e) {
+    isDrawing = true;
+    // Keep receiving this pointer's events if the finger slides off the canvas.
+    canvas.setPointerCapture(e.pointerId);
+    [lastX, lastY] = canvasPoint(e);
+}
 function stopDrawing() { isDrawing = false; }
 function clearCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -23,16 +40,19 @@ function clearCanvas() {
 function draw(e) {
     if (!isDrawing) return;
     ctx.beginPath();
+    const [x, y] = canvasPoint(e);
     ctx.moveTo(lastX, lastY);
-    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.lineTo(x, y);
     ctx.stroke();
-    [lastX, lastY] = [e.offsetX, e.offsetY];
+    [lastX, lastY] = [x, y];
 }
 
-canvas.addEventListener('mousedown', startDrawing);
-canvas.addEventListener('mousemove', draw);
-canvas.addEventListener('mouseup', stopDrawing);
-canvas.addEventListener('mouseout', stopDrawing);
+// Pointer Events cover mouse, finger and stylus with the same handlers.
+canvas.addEventListener('pointerdown', startDrawing);
+canvas.addEventListener('pointermove', draw);
+canvas.addEventListener('pointerup', stopDrawing);
+canvas.addEventListener('pointercancel', stopDrawing);
+canvas.addEventListener('pointerleave', stopDrawing);
 clearButton.addEventListener('click', clearCanvas);
 
 // Converts the freehand drawing on `sourceCanvas` into a 28x28 image that
